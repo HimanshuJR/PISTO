@@ -1,0 +1,1891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pisto — India's Circular Water Economy</title>
+  <meta name="description" content="Drink. Return. Repeat. Pisto is India's first returnable water bottle system — eliminating single-use plastic one refill at a time." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+/* ═══════════════════════════════════════════════════════
+   PISTO — Premium Landing Page Styles
+   Direction: Organic Luxury Dark
+   ═══════════════════════════════════════════════════════ */
+
+:root {
+  --forest:   #0d1f15;
+  --deep:     #0a1a10;
+  --emerald:  #1a6b4a;
+  --green:    #34c77b;
+  --green-lt: #a8f0cb;
+  --cream:    #f7f3ec;
+  --cream-dk: #ede8df;
+  --gold:     #c9a84c;
+  --gold-lt:  #f0d48a;
+  --muted:    rgba(247,243,236,0.55);
+  --muted-dk: rgba(247,243,236,0.35);
+  --border:   rgba(255,255,255,0.07);
+  --border-lt: rgba(255,255,255,0.12);
+  --card-bg:  rgba(255,255,255,0.04);
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body:    'Plus Jakarta Sans', system-ui, sans-serif;
+
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* ─── RESET ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  background: var(--forest);
+  color: var(--cream);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+/* ─── GRAIN ─────────────────────────────────────────── */
+.grain {
+  position: fixed; inset: 0; z-index: 9999;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ─── CUSTOM CURSOR ─────────────────────────────────── */
+.cursor {
+  position: fixed; z-index: 10000;
+  width: 8px; height: 8px;
+  background: var(--green);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s;
+  mix-blend-mode: screen;
+}
+.cursor-follower {
+  position: fixed; z-index: 9999;
+  width: 36px; height: 36px;
+  border: 1px solid rgba(52, 199, 123, 0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: left 0.14s var(--ease-out), top 0.14s var(--ease-out), width 0.3s, height 0.3s, opacity 0.3s;
+}
+.cursor-follower.hovered {
+  width: 60px; height: 60px;
+  border-color: rgba(52, 199, 123, 0.6);
+}
+@media (hover: none) { .cursor, .cursor-follower { display: none; } }
+
+/* ─── UTILITIES ─────────────────────────────────────── */
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+.section { padding: 120px 0; }
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 1.25rem;
+}
+.section-header { text-align: center; margin-bottom: 80px; }
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  margin-bottom: 1.25rem;
+}
+.section-title em {
+  font-style: italic;
+  color: var(--green-lt);
+}
+.section-sub {
+  font-size: 1.05rem;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.75;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* ─── BUTTONS ────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--green);
+  color: var(--deep);
+  font-family: var(--font-body);
+  font-size: 0.9rem; font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 100px;
+  border: none; cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+  position: relative; overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(255,255,255,0.15);
+  transform: translateX(-100%);
+  transition: transform 0.4s var(--ease-out);
+}
+.btn-primary:hover::before { transform: translateX(0); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(52,199,123,0.3); }
+.btn-primary:active { transform: translateY(0) scale(0.98); }
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--deep);
+}
+.btn-gold:hover { box-shadow: 0 12px 40px rgba(201,168,76,0.35); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.9rem; font-weight: 500;
+  color: var(--muted);
+  padding: 14px 20px;
+  border-radius: 100px;
+  border: 1px solid var(--border-lt);
+  transition: all 0.3s var(--ease-out);
+  cursor: pointer;
+}
+.btn-ghost:hover {
+  color: var(--cream);
+  border-color: rgba(255,255,255,0.25);
+  background: var(--card-bg);
+}
+
+.btn-large { padding: 18px 40px; font-size: 1rem; }
+
+/* ─── NAV ────────────────────────────────────────────── */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  transition: all 0.4s var(--ease-out);
+}
+#nav.scrolled {
+  background: rgba(13, 31, 21, 0.85);
+  backdrop-filter: blur(20px) saturate(1.5);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 1160px;
+  margin: 0 auto; padding: 0 5vw;
+  height: 72px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 400;
+  color: var(--cream);
+  letter-spacing: -0.03em;
+}
+.logo-mark {
+  width: 28px; height: 28px;
+  background: var(--green);
+  border-radius: 8px;
+  position: relative;
+  flex-shrink: 0;
+}
+.logo-mark::after {
+  content: '';
+  position: absolute; inset: 6px;
+  background: var(--deep);
+  border-radius: 4px;
+}
+.nav-links {
+  display: flex; gap: 2.5rem;
+}
+.nav-links a {
+  font-size: 0.85rem; font-weight: 400;
+  color: var(--muted);
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: -3px; left: 0; right: 0;
+  height: 1px; background: var(--green);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s var(--ease-out);
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+.nav-cta {
+  display: inline-flex; align-items: center;
+  font-size: 0.82rem; font-weight: 600;
+  background: rgba(52,199,123,0.12);
+  border: 1px solid rgba(52,199,123,0.3);
+  color: var(--green-lt);
+  padding: 9px 20px;
+  border-radius: 100px;
+  transition: all 0.3s var(--ease-out);
+}
+.nav-cta:hover {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--deep);
+}
+
+.hamburger {
+  display: none; flex-direction: column;
+  gap: 5px; background: none; border: none; cursor: pointer; padding: 4px;
+}
+.hamburger span {
+  display: block; width: 22px; height: 1.5px;
+  background: var(--cream); border-radius: 2px;
+  transition: all 0.3s var(--ease-out);
+}
+.hamburger.open span:first-child { transform: rotate(45deg) translate(4.5px, 4.5px); }
+.hamburger.open span:last-child  { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+.mobile-menu {
+  display: none;
+  position: fixed; top: 72px; left: 0; right: 0; z-index: 999;
+  background: rgba(10, 26, 16, 0.98);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 5vw 2rem;
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: all 0.35s var(--ease-out);
+  pointer-events: none;
+}
+.mobile-menu.open {
+  transform: translateY(0); opacity: 1; pointer-events: auto;
+}
+.mobile-menu ul { display: flex; flex-direction: column; gap: 1rem; }
+.mobile-menu a {
+  font-size: 1.1rem; color: var(--muted);
+  transition: color 0.2s;
+}
+.mobile-menu a:hover { color: var(--cream); }
+
+/* ─── HERO ───────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 140px 5vw 80px;
+  max-width: 1160px;
+  margin: 0 auto;
+  gap: 60px;
+  position: relative;
+}
+
+.hero-bg-orbs {
+  position: fixed; inset: 0; z-index: -1;
+  pointer-events: none;
+}
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.18;
+}
+.orb-1 {
+  width: 600px; height: 600px;
+  background: var(--emerald);
+  top: -10%; right: -5%;
+  animation: orb-drift-1 18s ease-in-out infinite;
+}
+.orb-2 {
+  width: 400px; height: 400px;
+  background: #1a4b2e;
+  bottom: 10%; left: -10%;
+  animation: orb-drift-2 22s ease-in-out infinite;
+}
+.orb-3 {
+  width: 300px; height: 300px;
+  background: #4a8f3f;
+  top: 40%; left: 30%;
+  animation: orb-drift-3 26s ease-in-out infinite;
+  opacity: 0.08;
+}
+@keyframes orb-drift-1 {
+  0%,100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(-40px, 30px) scale(1.05); }
+  66%      { transform: translate(20px, -40px) scale(0.95); }
+}
+@keyframes orb-drift-2 {
+  0%,100% { transform: translate(0, 0); }
+  50%      { transform: translate(60px, -40px); }
+}
+@keyframes orb-drift-3 {
+  0%,100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(-30px, 30px) scale(1.1); }
+}
+
+.hero-content { position: relative; z-index: 1; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.04em;
+  color: var(--green-lt);
+  background: rgba(52,199,123,0.08);
+  border: 1px solid rgba(52,199,123,0.2);
+  padding: 8px 16px;
+  border-radius: 100px;
+  margin-bottom: 2rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 300;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--cream);
+  margin-bottom: 1.75rem;
+}
+.hero-title .line { display: block; }
+.hero-title .italic { font-style: italic; color: var(--green-lt); }
+
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.75;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+  max-width: 400px;
+}
+
+.hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+
+/* ─── LOOP VISUAL ────────────────────────────────────── */
+.hero-visual {
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  height: 500px;
+}
+
+.loop-ring {
+  position: relative;
+  width: 420px; height: 420px;
+}
+
+.loop-track {
+  position: absolute; inset: 0;
+}
+
+.loop-svg {
+  width: 100%; height: 100%;
+}
+
+.loop-dash {
+  animation: loop-spin 20s linear infinite;
+  transform-origin: 200px 200px;
+}
+@keyframes loop-spin {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: -120; }
+}
+
+.bottle-center {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: bottle-float 5s ease-in-out infinite;
+  z-index: 2;
+}
+@keyframes bottle-float {
+  0%,100% { transform: translate(-50%, -50%) translateY(0); }
+  50%      { transform: translate(-50%, -50%) translateY(-14px); }
+}
+
+.bottle-glow {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px; height: 200px;
+  background: radial-gradient(ellipse at center, rgba(52,199,123,0.25) 0%, transparent 70%);
+  filter: blur(20px);
+  z-index: -1;
+  animation: glow-pulse 5s ease-in-out infinite;
+}
+@keyframes glow-pulse {
+  0%,100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+  50%      { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+}
+
+.orbit-node {
+  position: absolute;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  z-index: 3;
+}
+.node-buy    { top: 10px; left: 50%; transform: translateX(-50%); }
+.node-drink  { right: 5px; top: 50%; transform: translateY(-50%); }
+.node-return { bottom: 10px; left: 50%; transform: translateX(-50%); }
+.node-refill { left: 5px; top: 50%; transform: translateY(-50%); }
+
+.node-icon {
+  width: 52px; height: 52px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s var(--ease-out);
+}
+.orbit-node:hover .node-icon {
+  background: rgba(52,199,123,0.15);
+  border-color: rgba(52,199,123,0.35);
+  transform: scale(1.1);
+}
+
+.node-label {
+  font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted-dk);
+}
+
+.float-card {
+  position: absolute;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-lt);
+  border-radius: 16px;
+  padding: 14px 18px;
+  backdrop-filter: blur(16px);
+  z-index: 4;
+}
+.fc-1 {
+  top: 50px; right: -30px;
+  animation: fc-float-1 5.5s ease-in-out infinite;
+}
+.fc-2 {
+  bottom: 80px; left: -20px;
+  animation: fc-float-2 6s ease-in-out infinite;
+}
+@keyframes fc-float-1 {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+@keyframes fc-float-2 {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(8px); }
+}
+.fc-num {
+  font-family: var(--font-display);
+  font-size: 2.2rem; font-weight: 400;
+  color: var(--green);
+  line-height: 1;
+}
+.fc-num span { font-size: 1.4rem; }
+.fc-label {
+  font-size: 0.72rem; color: var(--muted); font-weight: 400;
+  margin-top: 2px;
+}
+.fc-icon { font-size: 1.8rem; margin-bottom: 4px; }
+
+.scroll-hint {
+  position: absolute; bottom: 40px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: var(--muted-dk); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  grid-column: 1 / -1;
+  margin-top: auto;
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--muted-dk));
+  animation: scroll-line 2s ease-in-out infinite;
+}
+@keyframes scroll-line {
+  0%,100% { opacity: 0.4; transform: scaleY(1); }
+  50%      { opacity: 1; transform: scaleY(1.1); }
+}
+
+/* ─── HOW IT WORKS ───────────────────────────────────── */
+.how-section { background: transparent; }
+
+.steps-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+  margin-top: 20px;
+}
+
+.steps-line {
+  position: absolute;
+  top: 42px; left: 12%; right: 12%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-lt) 20%, var(--border-lt) 80%, transparent);
+  z-index: 0;
+}
+
+.step-item {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; padding: 0 16px;
+  position: relative; z-index: 1;
+}
+
+.step-num {
+  font-family: var(--font-display);
+  font-size: 0.7rem; font-weight: 600;
+  color: var(--muted-dk); letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.step-icon-wrap {
+  width: 72px; height: 72px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border-lt);
+  border-radius: 20px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: all 0.4s var(--ease-out);
+  position: relative;
+}
+.step-icon-wrap::after {
+  content: '';
+  position: absolute; inset: -1px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(52,199,123,0.3), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.step-item:hover .step-icon-wrap {
+  background: rgba(52,199,123,0.08);
+  border-color: rgba(52,199,123,0.3);
+  transform: translateY(-4px);
+}
+.step-item:hover .step-icon-wrap::after { opacity: 1; }
+
+.step-icon { font-size: 1.8rem; position: relative; z-index: 1; }
+
+.step-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem; font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.6rem;
+}
+.step-body p {
+  font-size: 0.85rem; color: var(--muted); line-height: 1.7; font-weight: 300;
+}
+
+.step-arrow {
+  position: absolute;
+  right: -8px; top: 40px;
+  color: var(--muted-dk); font-size: 1.1rem;
+  z-index: 2;
+}
+.step-last .step-arrow { display: none; }
+
+/* ─── IMPACT ─────────────────────────────────────────── */
+.impact-section {
+  background: linear-gradient(180deg, transparent 0%, rgba(26, 107, 74, 0.06) 50%, transparent 100%);
+}
+
+.impact-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+  margin-bottom: 80px;
+}
+.impact-left .section-title { text-align: left; margin-bottom: 1rem; }
+.impact-left .section-sub { margin: 0; text-align: left; }
+
+.impact-right { display: flex; flex-direction: column; gap: 2.5rem; }
+
+.impact-stat { position: relative; }
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1;
+  display: inline-block;
+}
+.stat-plus {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 2.5rem; font-weight: 300;
+  color: var(--green);
+  margin-left: 4px;
+}
+.stat-label {
+  display: block;
+  font-size: 0.9rem; color: var(--muted); font-weight: 300;
+  margin-top: 4px; margin-bottom: 12px;
+}
+.stat-bar {
+  height: 2px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.stat-bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--emerald), var(--green));
+  border-radius: 2px;
+  width: 0;
+  transition: width 1.5s var(--ease-out);
+}
+.impact-stat.counted .stat-bar-fill {
+  /* width already set inline */
+  width: var(--bar-w, 100%);
+}
+
+.impact-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.impact-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.4s var(--ease-out);
+  position: relative; overflow: hidden;
+}
+.impact-card::before {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(to right, var(--emerald), var(--green));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.5s var(--ease-out);
+}
+.impact-card:hover { background: rgba(255,255,255,0.06); border-color: var(--border-lt); transform: translateY(-4px); }
+.impact-card:hover::before { transform: scaleX(1); }
+.ic-icon { font-size: 2rem; margin-bottom: 1rem; }
+.impact-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem; font-weight: 400;
+  color: var(--cream); margin-bottom: 0.6rem;
+}
+.impact-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+
+/* ─── STORY ──────────────────────────────────────────── */
+.story-section {
+  background: linear-gradient(180deg, transparent 0%, rgba(10,26,16,0.8) 50%, transparent 100%);
+}
+
+.story-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 100px; align-items: center;
+}
+
+.cycle-diagram {
+  width: 340px; height: 340px;
+  position: relative; margin: 0 auto;
+}
+.cycle-center {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center; z-index: 2;
+}
+.cycle-num {
+  font-family: var(--font-display);
+  font-size: 5rem; font-weight: 300;
+  color: var(--green);
+  display: block; line-height: 1;
+}
+.cycle-sub {
+  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted-dk); font-weight: 500;
+}
+.cycle-ring {
+  position: absolute; border-radius: 50%;
+  border: 1px solid rgba(52,199,123,0.15);
+  top: 50%; left: 50%;
+}
+.cycle-ring-outer {
+  width: 320px; height: 320px;
+  transform: translate(-50%, -50%);
+  border-color: rgba(52,199,123,0.12);
+  animation: ring-spin 30s linear infinite;
+}
+.cycle-ring-inner {
+  width: 220px; height: 220px;
+  transform: translate(-50%, -50%);
+  border-color: rgba(52,199,123,0.2);
+  border-style: dashed;
+  animation: ring-spin 20s linear infinite reverse;
+}
+@keyframes ring-spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.cycle-labels { position: absolute; inset: 0; }
+.cl {
+  position: absolute;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted);
+  background: rgba(13,31,21,0.9);
+  padding: 4px 10px; border-radius: 20px;
+  border: 1px solid var(--border);
+}
+.cl-top    { top: 0; left: 50%; transform: translateX(-50%); }
+.cl-right  { right: 0; top: 50%; transform: translateY(-50%); }
+.cl-bottom { bottom: 0; left: 50%; transform: translateX(-50%); }
+.cl-left   { left: 0; top: 50%; transform: translateY(-50%); }
+
+.story-content .section-title { text-align: left; margin-bottom: 1rem; }
+.story-body {
+  font-size: 0.98rem; color: var(--muted); line-height: 1.85;
+  font-weight: 300; margin-bottom: 1.25rem;
+}
+.story-quote {
+  margin-top: 2.5rem;
+  padding: 1.5rem 1.75rem;
+  border-left: 2px solid var(--green);
+  background: rgba(52,199,123,0.05);
+  border-radius: 0 12px 12px 0;
+}
+.story-quote blockquote {
+  font-family: var(--font-display);
+  font-size: 1.05rem; font-style: italic;
+  color: var(--green-lt); font-weight: 300;
+  line-height: 1.6;
+}
+
+/* ─── VENDORS ────────────────────────────────────────── */
+.vendor-section {
+  background: linear-gradient(180deg, transparent 0%, rgba(26,107,74,0.05) 100%);
+}
+
+.vendor-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.vendor-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.4s var(--ease-out);
+  cursor: default;
+}
+.vendor-card:hover {
+  background: rgba(255,255,255,0.055);
+  border-color: rgba(201,168,76,0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.vc-icon { font-size: 2rem; margin-bottom: 1.25rem; display: block; }
+.vendor-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem; font-weight: 400;
+  color: var(--cream); margin-bottom: 0.6rem;
+}
+.vendor-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+
+.vendor-cta { text-align: center; margin-top: 60px; }
+
+/* ─── TRUST ──────────────────────────────────────────── */
+.trust-section { padding: 0 0 80px; }
+.trust-inner { display: flex; justify-content: center; }
+.trust-badge-large {
+  display: flex; align-items: center; gap: 20px;
+  background: rgba(201,168,76,0.06);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 20px;
+  padding: 20px 32px;
+  max-width: 680px; width: 100%;
+}
+.tb-logo {
+  width: 52px; height: 52px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--gold), #a8731a);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em;
+  color: var(--deep);
+}
+.tb-content { flex: 1; }
+.tb-title { font-weight: 600; font-size: 0.95rem; color: var(--cream); margin-bottom: 3px; }
+.tb-sub { font-size: 0.78rem; color: var(--muted); font-weight: 300; }
+.tb-seal {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em;
+  color: var(--gold);
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 6px 14px; border-radius: 100px;
+  flex-shrink: 0;
+}
+
+/* ─── TEAM ───────────────────────────────────────────── */
+.team-section { }
+.team-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.team-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2.5rem;
+  display: grid; grid-template-columns: auto 1fr;
+  gap: 28px; align-items: start;
+  transition: all 0.4s var(--ease-out);
+  position: relative; overflow: hidden;
+}
+.team-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(52,199,123,0.4), transparent);
+  opacity: 0; transition: opacity 0.4s;
+}
+.team-card:hover {
+  border-color: var(--border-lt);
+  transform: translateY(-4px);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+}
+.team-card:hover::before { opacity: 1; }
+
+.tc-avatar {
+  position: relative; flex-shrink: 0;
+}
+.tc-avatar-inner {
+  width: 72px; height: 72px;
+  background: linear-gradient(135deg, var(--emerald), #0f5237);
+  border-radius: 20px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.8rem; font-weight: 300;
+  color: var(--green-lt);
+  position: relative; z-index: 1;
+}
+.tc-avatar-ring {
+  position: absolute; inset: -4px;
+  border: 1px solid rgba(52,199,123,0.2);
+  border-radius: 24px;
+  transition: all 0.4s var(--ease-out);
+}
+.team-card:hover .tc-avatar-ring {
+  inset: -6px;
+  border-color: rgba(52,199,123,0.4);
+}
+
+.tc-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem; font-weight: 300;
+  color: var(--cream); margin-bottom: 3px;
+}
+.tc-role {
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--green); margin-bottom: 1rem;
+}
+.tc-bio {
+  font-size: 0.875rem; color: var(--muted); line-height: 1.75; font-weight: 300;
+  margin-bottom: 1.25rem;
+}
+.tc-tags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.tc-tags span {
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--muted-dk);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  padding: 4px 12px; border-radius: 100px;
+}
+
+/* ─── CTA ────────────────────────────────────────────── */
+.cta-section {
+  position: relative;
+}
+.cta-inner {
+  text-align: center;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-lt);
+  border-radius: 32px;
+  padding: 100px 60px;
+  position: relative; overflow: hidden;
+}
+.cta-bg-orb {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(52,199,123,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 300; line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--cream);
+  margin: 1rem 0;
+}
+.cta-title em { font-style: italic; color: var(--green-lt); }
+.cta-sub {
+  font-size: 1rem; color: var(--muted); font-weight: 300;
+  line-height: 1.75; margin-bottom: 3rem;
+}
+
+.contact-cards {
+  display: flex; gap: 16px; justify-content: center;
+  flex-wrap: wrap; margin-bottom: 2.5rem;
+}
+.contact-card {
+  display: flex; align-items: center; gap: 14px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-lt);
+  border-radius: 16px;
+  padding: 16px 24px;
+  transition: all 0.3s var(--ease-out);
+  cursor: pointer;
+}
+.contact-card:hover {
+  background: rgba(52,199,123,0.08);
+  border-color: rgba(52,199,123,0.3);
+  transform: translateY(-2px);
+}
+.cc-icon { font-size: 1.5rem; }
+.cc-label { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-dk); font-weight: 500; margin-bottom: 3px; }
+.cc-num { font-family: var(--font-display); font-size: 1.15rem; font-weight: 300; color: var(--cream); }
+
+.cta-actions { margin-bottom: 2.5rem; }
+.trust-line {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  font-size: 0.75rem; color: var(--muted-dk); font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+/* ─── FOOTER ─────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 60px 0 40px;
+}
+.footer-inner {
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px; margin-bottom: 60px;
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 2rem; font-weight: 300;
+  color: var(--cream); margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+}
+.footer-brand p {
+  font-size: 0.85rem; color: var(--muted); line-height: 1.7; font-weight: 300; margin-bottom: 0.75rem;
+}
+.footer-tagline {
+  font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--green); font-weight: 500;
+}
+.footer-links-group { display: flex; flex-direction: column; gap: 0.75rem; }
+.flg-title {
+  font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted-dk); font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.footer-links-group a {
+  font-size: 0.85rem; color: var(--muted); font-weight: 300;
+  transition: color 0.2s;
+}
+.footer-links-group a:hover { color: var(--cream); }
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 28px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem;
+  font-size: 0.75rem; color: var(--muted-dk); font-weight: 300;
+}
+
+/* ─── ANIMATIONS ─────────────────────────────────────── */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.reveal-up.visible {
+  opacity: 1; transform: translateY(0);
+}
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+}
+.reveal-scale.visible {
+  opacity: 1; transform: scale(1);
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; text-align: center; padding-top: 130px; }
+  .hero-content { order: 2; }
+  .hero-visual { order: 1; height: 380px; }
+  .hero-sub { margin: 0 auto 2.5rem; }
+  .hero-actions { justify-content: center; }
+  .loop-ring { width: 340px; height: 340px; }
+  .hero-title { font-size: clamp(3rem, 8vw, 5rem); }
+  .scroll-hint { display: none; }
+}
+
+@media (max-width: 900px) {
+  .section { padding: 80px 0; }
+  .steps-track { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .steps-line { display: none; }
+  .step-arrow { display: none; }
+  .impact-layout { grid-template-columns: 1fr; gap: 60px; }
+  .impact-left .section-title { text-align: center; }
+  .impact-left .section-sub { text-align: center; margin: 0 auto; }
+  .impact-cards { grid-template-columns: 1fr; }
+  .story-layout { grid-template-columns: 1fr; gap: 60px; }
+  .cycle-diagram { width: 280px; height: 280px; }
+  .story-content .section-title { text-align: center; }
+  .vendor-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+  .cta-inner { padding: 60px 32px; }
+}
+
+@media (max-width: 600px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .mobile-menu { display: block; }
+  .hero { padding: 120px 5vw 60px; }
+  .hero-visual { display: none; }
+  .hero-title { font-size: clamp(2.8rem, 10vw, 4rem); }
+  .steps-track { grid-template-columns: 1fr; }
+  .vendor-grid { grid-template-columns: 1fr; }
+  .team-card { grid-template-columns: 1fr; }
+  .tc-avatar { display: flex; }
+  .contact-cards { flex-direction: column; align-items: center; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .trust-badge-large { flex-direction: column; text-align: center; }
+  .section-title { font-size: clamp(2rem, 8vw, 3rem); }
+}
+
+</style>
+</head>
+<body>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursor-follower"></div>
+
+  <!-- GRAIN OVERLAY -->
+  <div class="grain"></div>
+
+  <!-- ═══════════════════════════════════════════ NAV ═══ -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="logo-mark"></span>
+        Pisto
+      </a>
+      <ul class="nav-links">
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#impact">Impact</a></li>
+        <li><a href="#vendors">Vendors</a></li>
+        <li><a href="#team">Team</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Join the movement</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#impact">Impact</a></li>
+      <li><a href="#vendors">Vendors</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Join the movement</a></li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ HERO ═══ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge reveal-up" data-delay="0">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="#34c77b"/><circle cx="7" cy="7" r="3" fill="white"/></svg>
+        Backed by Rajasthan Government · iStart Accelerator · Top 20
+      </div>
+
+      <h1 class="hero-title reveal-up" data-delay="100">
+        <span class="line">Drink.</span>
+        <span class="line italic">Return.</span>
+        <span class="line">Repeat.</span>
+      </h1>
+
+      <p class="hero-sub reveal-up" data-delay="200">
+        India's first circular water bottle system.<br />
+        One bottle. 25+ lives. Zero plastic guilt.
+      </p>
+
+      <div class="hero-actions reveal-up" data-delay="300">
+        <a href="#how" class="btn-primary">
+          <span>See how it works</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#contact" class="btn-ghost">Join the movement</a>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal-scale" data-delay="150">
+      <!-- CIRCULAR LOOP ANIMATION -->
+      <div class="loop-ring">
+        <div class="loop-track">
+          <svg class="loop-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="200" cy="200" r="160" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <circle cx="200" cy="200" r="160" stroke="url(#loopGrad)" stroke-width="1.5" stroke-dasharray="8 16" class="loop-dash"/>
+            <defs>
+              <linearGradient id="loopGrad" x1="0" y1="0" x2="400" y2="400">
+                <stop offset="0%" stop-color="#34c77b"/>
+                <stop offset="100%" stop-color="#1a6b4a"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <!-- BOTTLE CENTER -->
+        <div class="bottle-center">
+          <svg class="bottle-svg" width="90" height="200" viewBox="0 0 90 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- cap -->
+            <rect x="30" y="6" width="30" height="18" rx="6" fill="#0d2218"/>
+            <!-- neck -->
+            <rect x="35" y="22" width="20" height="18" rx="4" fill="#1a6b4a"/>
+            <!-- body -->
+            <rect x="12" y="38" width="66" height="146" rx="14" fill="#1a6b4a"/>
+            <!-- water -->
+            <rect x="12" y="100" width="66" height="84" rx="0" fill="#0f5237"/>
+            <rect x="12" y="170" width="66" height="14" rx="8" fill="#0f5237"/>
+            <!-- shine -->
+            <rect x="22" y="50" width="8" height="70" rx="4" fill="rgba(255,255,255,0.18)"/>
+            <rect x="34" y="50" width="3" height="40" rx="1.5" fill="rgba(255,255,255,0.10)"/>
+            <!-- label -->
+            <rect x="20" y="110" width="50" height="54" rx="6" fill="rgba(255,255,255,0.07)"/>
+            <rect x="27" y="122" width="36" height="3" rx="1.5" fill="rgba(255,255,255,0.35)"/>
+            <rect x="30" y="130" width="30" height="2.5" rx="1.25" fill="rgba(255,255,255,0.2)"/>
+            <rect x="28" y="137" width="34" height="2.5" rx="1.25" fill="rgba(255,255,255,0.2)"/>
+            <!-- bottom -->
+            <rect x="12" y="176" width="66" height="8" rx="7" fill="#0a3d28"/>
+          </svg>
+          <div class="bottle-glow"></div>
+        </div>
+
+        <!-- ORBIT NODES -->
+        <div class="orbit-node node-buy" data-angle="0">
+          <div class="node-icon">🛒</div>
+          <div class="node-label">Buy</div>
+        </div>
+        <div class="orbit-node node-drink" data-angle="90">
+          <div class="node-icon">💧</div>
+          <div class="node-label">Drink</div>
+        </div>
+        <div class="orbit-node node-return" data-angle="180">
+          <div class="node-icon">↩</div>
+          <div class="node-label">Return</div>
+        </div>
+        <div class="orbit-node node-refill" data-angle="270">
+          <div class="node-icon">♻️</div>
+          <div class="node-label">Refill</div>
+        </div>
+      </div>
+
+      <!-- FLOATING CARDS -->
+      <div class="float-card fc-1 reveal-up" data-delay="400">
+        <div class="fc-num">25<span>+</span></div>
+        <div class="fc-label">reuse cycles</div>
+      </div>
+      <div class="float-card fc-2 reveal-up" data-delay="500">
+        <div class="fc-icon">🌍</div>
+        <div class="fc-label">Less plastic</div>
+      </div>
+    </div>
+
+    <!-- SCROLL INDICATOR -->
+    <div class="scroll-hint reveal-up" data-delay="600">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════ HOW IT WORKS ═══ -->
+  <section class="section how-section" id="how">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow reveal-up">The system</div>
+        <h2 class="section-title reveal-up" data-delay="100">
+          A loop that <em>changes</em><br/>everything
+        </h2>
+        <p class="section-sub reveal-up" data-delay="200">
+          Not just a bottle. A behavior. A system.<br/>
+          The kind the planet has been waiting for.
+        </p>
+      </div>
+
+      <div class="steps-track">
+        <div class="steps-line"></div>
+
+        <div class="step-item reveal-up" data-delay="0">
+          <div class="step-num">01</div>
+          <div class="step-icon-wrap">
+            <div class="step-icon">🛒</div>
+          </div>
+          <div class="step-body">
+            <h3>You buy</h3>
+            <p>Pick up a Pisto bottle from any partner stall, café, or campus vendor. Sealed, clean, safe water — always.</p>
+          </div>
+          <div class="step-arrow">→</div>
+        </div>
+
+        <div class="step-item reveal-up" data-delay="100">
+          <div class="step-num">02</div>
+          <div class="step-icon-wrap">
+            <div class="step-icon">💧</div>
+          </div>
+          <div class="step-body">
+            <h3>You drink</h3>
+            <p>Hydrate on the go, at the gym, on campus. The bottle travels with you until every drop is gone.</p>
+          </div>
+          <div class="step-arrow">→</div>
+        </div>
+
+        <div class="step-item reveal-up" data-delay="200">
+          <div class="step-num">03</div>
+          <div class="step-icon-wrap">
+            <div class="step-icon">↩️</div>
+          </div>
+          <div class="step-body">
+            <h3>You return</h3>
+            <p>Drop it back at any Pisto point. Instant cash back in your hand. No app, no QR, no friction.</p>
+          </div>
+          <div class="step-arrow">→</div>
+        </div>
+
+        <div class="step-item step-last reveal-up" data-delay="300">
+          <div class="step-num">04</div>
+          <div class="step-icon-wrap">
+            <div class="step-icon">♻️</div>
+          </div>
+          <div class="step-body">
+            <h3>We refill</h3>
+            <p>The bottle is cleaned, sterilized, refilled, resealed — and lives another life. Then another. Then 23 more.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ IMPACT ═══ -->
+  <section class="section impact-section" id="impact">
+    <div class="container">
+      <div class="impact-layout">
+        <div class="impact-left">
+          <div class="eyebrow reveal-up">Our impact</div>
+          <h2 class="section-title reveal-up" data-delay="100">
+            Every return<br/><em>matters more</em><br/>than you know
+          </h2>
+          <p class="section-sub reveal-up" data-delay="200">
+            The numbers behind the movement — what happens when a system replaces a product.
+          </p>
+        </div>
+
+        <div class="impact-right">
+          <div class="impact-stat reveal-up" data-delay="0">
+            <div class="stat-number" data-count="25">0</div>
+            <div class="stat-plus">+</div>
+            <div class="stat-label">reuse cycles per bottle</div>
+            <div class="stat-bar"><div class="stat-bar-fill" style="width:100%"></div></div>
+          </div>
+
+          <div class="impact-stat reveal-up" data-delay="100">
+            <div class="stat-number" data-count="24">0</div>
+            <div class="stat-plus">×</div>
+            <div class="stat-label">fewer plastic bottles per single Pisto</div>
+            <div class="stat-bar"><div class="stat-bar-fill" style="width:96%"></div></div>
+          </div>
+
+          <div class="impact-stat reveal-up" data-delay="200">
+            <div class="stat-number" data-count="100">0</div>
+            <div class="stat-plus">%</div>
+            <div class="stat-label">returnable, refillable, reusable</div>
+            <div class="stat-bar"><div class="stat-bar-fill" style="width:100%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- IMPACT CARDS ROW -->
+      <div class="impact-cards">
+        <div class="impact-card reveal-up" data-delay="0">
+          <div class="ic-icon">🌿</div>
+          <h4>Plastic eliminated</h4>
+          <p>One Pisto bottle prevents 25 single-use bottles from entering landfills, drains, and oceans.</p>
+        </div>
+        <div class="impact-card reveal-up" data-delay="100">
+          <div class="ic-icon">💸</div>
+          <h4>Rewarding behavior</h4>
+          <p>We pay people to do the right thing. The incentive is baked into the price — not an afterthought.</p>
+        </div>
+        <div class="impact-card reveal-up" data-delay="200">
+          <div class="ic-icon">🔁</div>
+          <h4>True circularity</h4>
+          <p>Unlike recycling, we don't break the bottle down. We keep it whole — the most efficient loop possible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ STORY ═══ -->
+  <section class="section story-section">
+    <div class="container">
+      <div class="story-layout">
+        <div class="story-visual reveal-scale" data-delay="0">
+          <div class="cycle-diagram">
+            <div class="cycle-center">
+              <span class="cycle-num">∞</span>
+              <span class="cycle-sub">circular</span>
+            </div>
+            <div class="cycle-ring cycle-ring-outer"></div>
+            <div class="cycle-ring cycle-ring-inner"></div>
+            <div class="cycle-labels">
+              <span class="cl cl-top">Buy</span>
+              <span class="cl cl-right">Drink</span>
+              <span class="cl cl-bottom">Return</span>
+              <span class="cl cl-left">Refill</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-content">
+          <div class="eyebrow reveal-up">The philosophy</div>
+          <h2 class="section-title reveal-up" data-delay="100">
+            This is not a<br/><em>water bottle.</em>
+          </h2>
+          <p class="story-body reveal-up" data-delay="200">
+            It's a movement against the throwaway culture that is quietly drowning our cities.
+          </p>
+          <p class="story-body reveal-up" data-delay="280">
+            Inspired by Germany's Pfand deposit system — one of the most successful circular economy programs in history — Pisto adapts it for India's streets, campuses, and communities.
+          </p>
+          <p class="story-body reveal-up" data-delay="360">
+            We don't ask you to care about the planet. We make caring effortless, profitable, and satisfying. Behavior change through design.
+          </p>
+
+          <div class="story-quote reveal-up" data-delay="440">
+            <blockquote>"The most powerful systems are the ones that reward the behavior they want to see."</blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ VENDORS ═══ -->
+  <section class="section vendor-section" id="vendors">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow reveal-up" style="color: #c9a84c;">For partners</div>
+        <h2 class="section-title reveal-up" data-delay="100">
+          Grow your business.<br/><em>Help the planet.</em><br/>Do both.
+        </h2>
+        <p class="section-sub reveal-up" data-delay="200">
+          Joining Pisto as a vendor isn't charity. It's smart business.
+        </p>
+      </div>
+
+      <div class="vendor-grid">
+        <div class="vendor-card reveal-up" data-delay="0">
+          <div class="vc-icon">🔄</div>
+          <h3>Customers come back</h3>
+          <p>Every return visit is a chance for another sale. Pisto creates a reason to return that no other brand gives you.</p>
+        </div>
+        <div class="vendor-card reveal-up" data-delay="80">
+          <div class="vc-icon">😌</div>
+          <h3>Zero extra work</h3>
+          <p>Sell the bottle. Collect the return. We handle cleaning, refilling, and logistics — completely.</p>
+        </div>
+        <div class="vendor-card reveal-up" data-delay="160">
+          <div class="vc-icon">🛡️</div>
+          <h3>Absolutely zero risk</h3>
+          <p>Consignment model. No upfront investment. Unsold stock? We take it back. You only win.</p>
+        </div>
+        <div class="vendor-card reveal-up" data-delay="240">
+          <div class="vc-icon">🌱</div>
+          <h3>Be a green business</h3>
+          <p>Display the Pisto partner badge. Your customers know you care about the future — and they'll love you for it.</p>
+        </div>
+        <div class="vendor-card reveal-up" data-delay="320">
+          <div class="vc-icon">📍</div>
+          <h3>Join the network</h3>
+          <p>Be listed on the Pisto map. Every time a customer looks for a return point, they find you.</p>
+        </div>
+        <div class="vendor-card reveal-up" data-delay="400">
+          <div class="vc-icon">🤝</div>
+          <h3>Mission-aligned</h3>
+          <p>Be part of India's circular economy before it's mainstream. Early partners shape the movement.</p>
+        </div>
+      </div>
+
+      <div class="vendor-cta reveal-up" data-delay="200">
+        <a href="#contact" class="btn-primary btn-gold">
+          <span>Become a Pisto partner</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ TRUST ═══ -->
+  <section class="trust-section">
+    <div class="container">
+      <div class="trust-inner reveal-up">
+        <div class="trust-badge-large">
+          <div class="tb-logo">iStart</div>
+          <div class="tb-content">
+            <div class="tb-title">Backed by the Rajasthan Government</div>
+            <div class="tb-sub">Selected in Top 20 · iStart Accelerator Program · Government of Rajasthan</div>
+          </div>
+          <div class="tb-seal">✓ Verified</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ TEAM ═══ -->
+  <section class="section team-section" id="team">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow reveal-up">The founders</div>
+        <h2 class="section-title reveal-up" data-delay="100">
+          Built by believers
+        </h2>
+        <p class="section-sub reveal-up" data-delay="200">
+          Two Entrepreneur who decided that the best way to fix the plastic problem<br/>was to make fixing it irresistible.
+        </p>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card reveal-up" data-delay="0">
+          <div class="tc-avatar" data-initials="H">
+            <div class="tc-avatar-inner">H</div>
+            <div class="tc-avatar-ring"></div>
+          </div>
+          <div class="tc-body">
+            <h3 class="tc-name">Himanshu</h3>
+            <div class="tc-role">Co-founder & COO</div>
+            <p class="tc-bio">
+              Computer Science engineer and systems thinker. Believes the circular economy isn't the future — it's the only option. Building Pisto to prove that sustainability and profitability are the same thing.
+            </p>
+            <div class="tc-tags">
+              <span>Systems Design</span>
+              <span>Strategy</span>
+              <span>Operations</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card reveal-up" data-delay="150">
+          <div class="tc-avatar" data-initials="S">
+            <div class="tc-avatar-inner">S</div>
+            <div class="tc-avatar-ring"></div>
+          </div>
+          <div class="tc-body">
+            <h3 class="tc-name">Shishir Singhal</h3>
+            <div class="tc-role">Co-founder & CEO</div>
+            <p class="tc-bio">
+              Operations architect with a passion for ground-level execution. Shishir built the logistics backbone that makes Pisto's circular model actually work — not just in theory, but on the street.
+            </p>
+            <div class="tc-tags">
+              <span>Logistics</span>
+              <span>Partnerships</span>
+              <span>Growth</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ FINAL CTA ═══ -->
+  <section class="section cta-section" id="contact">
+    <div class="container">
+      <div class="cta-inner reveal-scale">
+        <div class="cta-bg-orb"></div>
+        <div class="eyebrow" style="color: #34c77b;">Ready?</div>
+        <h2 class="cta-title">
+          Join the<br/><em>movement.</em>
+        </h2>
+        <p class="cta-sub">
+          Whether you're a customer, a vendor, or an investor —<br/>
+          there's a place for you in India's circular economy.
+        </p>
+
+        <div class="contact-cards">
+          <a href="tel:8595781911" class="contact-card">
+            <div class="cc-icon">📞</div>
+            <div class="cc-body">
+              <div class="cc-label">Call Himanshu</div>
+              <div class="cc-num">+91 85957 81911</div>
+            </div>
+          </a>
+          <a href="tel:7240576930" class="contact-card">
+            <div class="cc-icon">📞</div>
+            <div class="cc-body">
+              <div class="cc-label">Call Shishir</div>
+              <div class="cc-num">+91 72405 76930</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="cta-actions">
+          <a href="tel:8595781911" class="btn-primary btn-large">
+            <span>Talk to us today</span>
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="trust-line">
+          <span>🏛️</span>
+          Backed by Rajasthan Government · iStart Program · Top 20 Startup
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ FOOTER ═══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logo">Pisto</div>
+          <p>India's circular water economy.<br/>Drink. Return. Repeat.</p>
+          <div class="footer-tagline">Making sustainability effortless.</div>
+        </div>
+        <div class="footer-links-group">
+          <div class="flg-title">Navigate</div>
+          <a href="#how">How it works</a>
+          <a href="#impact">Our impact</a>
+          <a href="#vendors">For vendors</a>
+          <a href="#team">Founders</a>
+        </div>
+        <div class="footer-links-group">
+          <div class="flg-title">Contact</div>
+          <a href="tel:8595781911">+91 85957 81911</a>
+          <a href="tel:7240576930">+91 72405 76930</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Pisto. All rights reserved.</span>
+        <span>Inspired by the German Pfand system · Built for India</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+/* ═══════════════════════════════════════════════════════
+   PISTO — Interactive JS
+   Scroll animations · Counter · Cursor · Parallax
+   ═══════════════════════════════════════════════════════ */
+
+(function () {
+  'use strict';
+
+  /* ── 1. CUSTOM CURSOR ────────────────────────────── */
+  const cursor   = document.getElementById('cursor');
+  const follower = document.getElementById('cursor-follower');
+  let mouseX = 0, mouseY = 0;
+  let followerX = 0, followerY = 0;
+
+  if (window.matchMedia('(hover: hover)').matches) {
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (cursor) {
+        cursor.style.left = mouseX + 'px';
+        cursor.style.top  = mouseY + 'px';
+      }
+    });
+
+    function animateFollower() {
+      followerX += (mouseX - followerX) * 0.12;
+      followerY += (mouseY - followerY) * 0.12;
+      if (follower) {
+        follower.style.left = followerX + 'px';
+        follower.style.top  = followerY + 'px';
+      }
+      requestAnimationFrame(animateFollower);
+    }
+    animateFollower();
+
+    const hoverTargets = document.querySelectorAll(
+      'a, button, .vendor-card, .impact-card, .team-card, .contact-card, .orbit-node'
+    );
+    hoverTargets.forEach(el => {
+      el.addEventListener('mouseenter', () => follower && follower.classList.add('hovered'));
+      el.addEventListener('mouseleave', () => follower && follower.classList.remove('hovered'));
+    });
+  }
+
+  /* ── 2. NAV SCROLL ───────────────────────────────── */
+  const nav = document.getElementById('nav');
+  function handleNavScroll() {
+    if (!nav) return;
+    if (window.scrollY > 40) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }
+  window.addEventListener('scroll', handleNavScroll, { passive: true });
+  handleNavScroll();
+
+  /* ── 3. MOBILE HAMBURGER ─────────────────────────── */
+  const hamburger  = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+  }
+
+  /* ── 4. SMOOTH SCROLL ────────────────────────────── */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      const offset = 80;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+
+  /* ── 5. REVEAL ANIMATIONS ────────────────────────── */
+  const revealEls = document.querySelectorAll('.reveal-up, .reveal-scale');
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el    = entry.target;
+      const delay = parseInt(el.dataset.delay || 0);
+      setTimeout(() => el.classList.add('visible'), delay);
+      revealObserver.unobserve(el);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  /* ── 6. COUNTER ANIMATION ────────────────────────── */
+  function animateCounter(el, target, duration) {
+    const start     = performance.now();
+    const startVal  = 0;
+    function step(timestamp) {
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased    = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(startVal + (target - startVal) * eased);
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(step);
+  }
+
+  const statEls = document.querySelectorAll('.stat-number[data-count]');
+  const barEls  = document.querySelectorAll('.stat-bar-fill');
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const stat   = entry.target;
+      const target = parseInt(stat.dataset.count);
+      animateCounter(stat, target, 1800);
+
+      // Animate bars in same section
+      barEls.forEach(bar => {
+        const w = bar.style.width;
+        bar.style.width = '0';
+        requestAnimationFrame(() => {
+          setTimeout(() => { bar.style.width = w; }, 200);
+        });
+      });
+
+      counterObserver.unobserve(stat);
+    });
+  }, { threshold: 0.5 });
+
+  statEls.forEach(el => counterObserver.observe(el));
+
+  /* ── 7. PARALLAX (HERO ORBS) ─────────────────────── */
+  const orbs = document.querySelectorAll('.orb');
+  let ticking = false;
+
+  function updateParallax() {
+    const sy = window.scrollY;
+    orbs.forEach((orb, i) => {
+      const speed = [0.12, 0.08, 0.05][i] || 0.1;
+      const sign  = i % 2 === 0 ? 1 : -1;
+      orb.style.transform = `translateY(${sy * speed * sign}px)`;
+    });
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  /* ── 8. HERO TITLE STAGGER ───────────────────────── */
+  const heroLines = document.querySelectorAll('.hero-title .line');
+  heroLines.forEach((line, i) => {
+    line.style.opacity   = '0';
+    line.style.transform = 'translateY(30px)';
+    line.style.transition = `opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1)`;
+    line.style.transitionDelay = `${i * 120}ms`;
+    setTimeout(() => {
+      line.style.opacity   = '1';
+      line.style.transform = 'translateY(0)';
+    }, 200 + i * 120);
+  });
+
+  /* ── 9. STEP CARDS — HOVER RIPPLE ───────────────── */
+  document.querySelectorAll('.step-item').forEach(item => {
+    const icon = item.querySelector('.step-icon-wrap');
+    if (!icon) return;
+    item.addEventListener('mouseenter', () => {
+      icon.style.boxShadow = '0 0 0 8px rgba(52,199,123,0.08)';
+    });
+    item.addEventListener('mouseleave', () => {
+      icon.style.boxShadow = 'none';
+    });
+  });
+
+  /* ── 10. ORBIT NODES — SUBTLE PULSE ─────────────── */
+  const nodes = document.querySelectorAll('.orbit-node');
+  nodes.forEach((node, i) => {
+    const icon = node.querySelector('.node-icon');
+    if (!icon) return;
+    setInterval(() => {
+      icon.style.transform = 'scale(1.08)';
+      setTimeout(() => { icon.style.transform = 'scale(1)'; }, 400);
+    }, 2000 + i * 600);
+    icon.style.transition = 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1), background 0.3s, border-color 0.3s';
+  });
+
+  /* ── 11. VENDOR CARDS — STAGGER ON ENTER ─────────── */
+  const vendorCards = document.querySelectorAll('.vendor-card');
+  const vcObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const cards = entry.target.closest('.vendor-grid')?.querySelectorAll('.vendor-card') || [];
+      cards.forEach((card, i) => {
+        setTimeout(() => {
+          card.style.opacity   = '1';
+          card.style.transform = 'translateY(0)';
+        }, i * 70);
+      });
+      vcObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.1 });
+
+  if (vendorCards.length) {
+    vendorCards.forEach(c => {
+      c.style.opacity   = '0';
+      c.style.transform = 'translateY(24px)';
+      c.style.transition = 'opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1)';
+    });
+    vcObserver.observe(vendorCards[0]);
+  }
+
+  /* ── 12. TRUST BADGE SHIMMER ─────────────────────── */
+  const trustBadge = document.querySelector('.trust-badge-large');
+  if (trustBadge) {
+    trustBadge.addEventListener('mouseenter', () => {
+      trustBadge.style.boxShadow = '0 0 40px rgba(201,168,76,0.15)';
+    });
+    trustBadge.addEventListener('mouseleave', () => {
+      trustBadge.style.boxShadow = 'none';
+    });
+    trustBadge.style.transition = 'box-shadow 0.4s ease, transform 0.3s ease';
+    trustBadge.addEventListener('mouseenter', () => { trustBadge.style.transform = 'scale(1.01)'; });
+    trustBadge.addEventListener('mouseleave', () => { trustBadge.style.transform = 'scale(1)'; });
+  }
+
+  /* ── 13. BOTTLE DRAG TILT ────────────────────────── */
+  const bottleCenter = document.querySelector('.bottle-center');
+  if (bottleCenter) {
+    document.addEventListener('mousemove', (e) => {
+      const rect    = document.body.getBoundingClientRect();
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const dx = (e.clientX - centerX) / centerX;
+      const dy = (e.clientY - centerY) / centerY;
+      bottleCenter.style.transform = `translate(-50%, -50%) rotateX(${-dy * 6}deg) rotateY(${dx * 6}deg)`;
+    });
+    bottleCenter.style.transition = 'transform 0.4s ease';
+  }
+
+  /* ── 14. SECTION ACTIVE LINKS ────────────────────── */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinksAll = document.querySelectorAll('.nav-links a');
+
+  const activeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinksAll.forEach(a => {
+          a.style.color = a.getAttribute('href') === '#' + id
+            ? 'var(--cream)'
+            : '';
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach(s => activeObserver.observe(s));
+
+  /* ── 15. CONTACT CARDS — PHONE HIGHLIGHT ─────────── */
+  document.querySelectorAll('.contact-card').forEach(card => {
+    const num = card.querySelector('.cc-num');
+    card.addEventListener('mouseenter', () => {
+      if (num) num.style.color = 'var(--green-lt)';
+    });
+    card.addEventListener('mouseleave', () => {
+      if (num) num.style.color = '';
+    });
+    if (num) num.style.transition = 'color 0.25s';
+  });
+
+  /* ── 16. PAGE LOAD FADE ───────────────────────────── */
+  document.body.style.opacity = '0';
+  document.body.style.transition = 'opacity 0.6s ease';
+  window.addEventListener('load', () => {
+    document.body.style.opacity = '1';
+  });
+
+})();
+
+</script>
+</body>
+</html>
